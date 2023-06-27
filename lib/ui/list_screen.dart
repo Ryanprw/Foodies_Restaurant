@@ -3,13 +3,13 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:restauran_app/data/api/api_service.dart';
 import 'package:restauran_app/provider/restaurant_provider.dart';
-import 'package:restauran_app/ui/search_resto.dart';
-import 'package:restauran_app/widgets/card_restaurant.dart';
+import 'package:restauran_app/ui/search.dart';
+import 'package:restauran_app/widgets/card_screen.dart';
 
-class ListRestoScreen extends StatelessWidget {
-  static const routeName = '/resto-list';
+class ListScreen extends StatelessWidget {
+  static const routeName = '/list';
 
-  const ListRestoScreen({Key? key}) : super(key: key);
+  const ListScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class ListRestoScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, SearchPageScreen.routeName);
+              Navigator.pushNamed(context, SearchScreen.routeName);
             },
             icon: const Icon(
               Icons.search,
@@ -31,22 +31,22 @@ class ListRestoScreen extends StatelessWidget {
           )
         ],
       ),
-      body: _RestoListb(context),
+      body: _listBody(context),
     );
   }
 }
 
-Widget _RestoListb(BuildContext context) {
+Widget _listBody(BuildContext context) {
   return ChangeNotifierProvider(
-    create: (_) => RestoListProvider(apiService: ApiService()),
-    child: Consumer<RestoListProvider>(
+    create: (_) => ListProvider(apiService: ApiService()),
+    child: Consumer<ListProvider>(
       builder: (context, state, _) {
         switch (state.state) {
           case ResultState.loading:
             return const Center(
               child: CircularProgressIndicator(
-                color: Colors.blue,
-                backgroundColor: Colors.green,
+                color: Color.fromARGB(255, 0, 0, 0),
+                backgroundColor: Color.fromARGB(255, 21, 231, 28),
               ),
             );
           case ResultState.hasData:
@@ -54,7 +54,7 @@ Widget _RestoListb(BuildContext context) {
               itemBuilder: (context, index) {
                 var resto = state.result.restaurants[index];
 
-                return ListResto(
+                return CardScreen(
                   resto: resto,
                 );
               },
@@ -70,14 +70,14 @@ Widget _RestoListb(BuildContext context) {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  LottieBuilder.asset("assets/connection.json"),
+                  LottieBuilder.asset("assets/ghost.json"),
                 ],
               ),
             );
           default:
             return const Center(
               child: Text(
-                'Gagal Load Data',
+                'Failed to load data',
                 style: TextStyle(fontSize: 25),
               ),
             );

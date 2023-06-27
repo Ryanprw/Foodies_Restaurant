@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:restauran_app/splashscreen/splashscreen.dart';
-import 'package:restauran_app/ui/list_resto_screen.dart';
-import 'package:restauran_app/ui/page_detail.dart';
-import 'ui/search_resto.dart';
+import 'package:restauran_app/ui/list_screen.dart';
+import 'package:restauran_app/ui/detail.dart';
+import 'ui/search.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +23,6 @@ class _MyAppState extends State<MyApp> {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   }
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -36,14 +35,14 @@ class _MyAppState extends State<MyApp> {
         } else {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'Restoran App',
+            title: 'Restauran App',
             theme: ThemeData(primarySwatch: Colors.blue),
-            home: const ListRestoScreen(),
+            home: const ListScreen(),
             routes: {
-              DetailPageList.routeName: (context) => DetailPageList(
+              DetailList.routeName: (context) => DetailList(
                     id: ModalRoute.of(context)?.settings.arguments as String,
                   ),
-              SearchPageScreen.routeName: (context) => const SearchPageScreen()
+              SearchScreen.routeName: (context) => const SearchScreen()
             },
           );
         }

@@ -1,25 +1,24 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
-import 'package:restauran_app/data/model/detail_restaurant.dart';
+import 'package:restauran_app/data/model/detail_resto.dart';
 
-class PageDetail extends StatefulWidget {
-  static const routeName = '/resto-detail';
+class ScreenDetail extends StatefulWidget {
+  static const routeName = '/screen-detail';
 
   final Restaurant restaurant;
 
-  const PageDetail({Key? key, required this.restaurant}) : super(key: key);
+  const ScreenDetail({Key? key, required this.restaurant}) : super(key: key);
 
   @override
-  State<PageDetail> createState() => _PageDetailState();
+  State<ScreenDetail> createState() => _ScreenDetailState();
 }
 
-class _PageDetailState extends State<PageDetail> {
+class _ScreenDetailState extends State<ScreenDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 12, 145, 80),
+      backgroundColor: const Color.fromARGB(255, 12, 145, 80),
       body: SafeArea(
         child: ListView(
           children: [
@@ -35,18 +34,16 @@ class _PageDetailState extends State<PageDetail> {
                 SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white54,
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.arrow_back,
-                            color: Colors.black,
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white54,
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.black,
                         ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                       ),
                     ),
                   ),
@@ -54,7 +51,7 @@ class _PageDetailState extends State<PageDetail> {
               ],
             ),
             Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -74,11 +71,9 @@ class _PageDetailState extends State<PageDetail> {
                     children: [
                       Row(
                         children: [
-                          Container(
-                            child: const Icon(
-                              Icons.location_on,
-                              color: Color.fromARGB(255, 255, 1, 1),
-                            ),
+                          const Icon(
+                            Icons.location_on,
+                            color: Color.fromARGB(255, 255, 1, 1),
                           ),
                           Text(
                             widget.restaurant.city,
@@ -99,9 +94,9 @@ class _PageDetailState extends State<PageDetail> {
                           padding: const EdgeInsets.only(right: 5),
                           child: Row(
                             children: [
-                              Container(
+                              const SizedBox(
                                 width: 30,
-                                child: const Icon(
+                                child: Icon(
                                   Icons.star,
                                   color: Colors.amber,
                                   size: 25,
@@ -126,7 +121,7 @@ class _PageDetailState extends State<PageDetail> {
                   ReadMoreText(
                     widget.restaurant.description,
                     style: GoogleFonts.montserrat(
-                        fontSize: 15,
+                        fontSize: 17,
                         fontWeight: FontWeight.w400,
                         color: Colors.white),
                     trimLines: 6,
@@ -134,9 +129,10 @@ class _PageDetailState extends State<PageDetail> {
                     trimCollapsedText: 'Show more',
                     trimExpandedText: 'Show less',
                     moreStyle: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 1, 89, 161)),
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 1, 89, 161),
+                    ),
                   ),
                   const SizedBox(
                     height: 20,
@@ -152,8 +148,10 @@ class _PageDetailState extends State<PageDetail> {
                     ),
                     child: Text(
                       "Foods",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
 
@@ -164,20 +162,21 @@ class _PageDetailState extends State<PageDetail> {
                       children: widget.restaurant.menus.foods.map(
                         (e) {
                           return Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 10,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 10,
+                            ),
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(255, 12, 145, 80),
+                            ),
+                            child: Text(
+                              e.name,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
                               ),
-                              decoration: const BoxDecoration(
-                                color: Color.fromARGB(255, 12, 145, 80),
-                              ),
-                              child: Text(
-                                e.name,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
-                              ));
+                            ),
+                          );
                         },
                       ).toList(),
                     ),
@@ -208,20 +207,21 @@ class _PageDetailState extends State<PageDetail> {
                       children: widget.restaurant.menus.drinks.map(
                         (e) {
                           return Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 10,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 10,
+                            ),
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(255, 12, 145, 80),
+                            ),
+                            child: Text(
+                              e.name,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
                               ),
-                              decoration: const BoxDecoration(
-                                color: Color.fromARGB(255, 12, 145, 80),
-                              ),
-                              child: Text(
-                                e.name,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
-                              ));
+                            ),
+                          );
                         },
                       ).toList(),
                     ),

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:restauran_app/data/api/api_service.dart';
-import 'package:restauran_app/data/model/search_restaurant.dart';
+import 'package:restauran_app/data/model/search_resto.dart';
 
 enum ResultState { loading, noData, hasData, error }
 
@@ -11,12 +11,12 @@ class SearchResProvider extends ChangeNotifier {
     fetcViewRes(query);
   }
   ResultState? _state;
-  ResSearch? _search;
+  LocalSearch? _search;
   String _query = '';
   String _message = '';
 
   ResultState? get state => _state;
-  ResSearch? get result => _search;
+  LocalSearch? get result => _search;
   String get query => _query;
   String get message => _message;
 
@@ -34,7 +34,7 @@ class SearchResProvider extends ChangeNotifier {
         } else {
           _state = ResultState.noData;
           notifyListeners();
-          return _message = 'Resto Tidak Ditemukan';
+          return _message = '404 Not Found';
         }
       }
     } catch (e) {

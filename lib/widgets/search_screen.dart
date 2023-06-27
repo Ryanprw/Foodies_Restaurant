@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:restauran_app/data/model/search_restaurant.dart';
-import 'package:restauran_app/ui/page_detail.dart';
+import 'package:restauran_app/data/model/search_resto.dart';
+import 'package:restauran_app/ui/detail.dart';
 
-class SearchPage extends StatelessWidget {
+class ScreenSearch extends StatelessWidget {
   final Restaurant restaurant;
 
-  const SearchPage({Key? key, required this.restaurant}) : super(key: key);
+  const ScreenSearch({Key? key, required this.restaurant}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, DetailPageList.routeName,
+        Navigator.pushNamed(context, DetailList.routeName,
             arguments: restaurant.id);
       },
       child: Card(
         color: Colors.white54,
-        margin: EdgeInsets.all(15),
+        margin: const EdgeInsets.all(15),
         elevation: 10,
         child: Padding(
           padding: const EdgeInsets.all(8.0),

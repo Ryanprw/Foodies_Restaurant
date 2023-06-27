@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:restauran_app/ui/page_detail.dart';
+import 'package:restauran_app/ui/detail.dart';
 
 import '../data/model/restaurant.dart';
 
-class ListResto extends StatelessWidget {
+class CardScreen extends StatelessWidget {
   final Restaurant resto;
 
-  const ListResto({super.key, required this.resto});
+  const CardScreen({super.key, required this.resto});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class ListResto extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(
           context,
-          DetailPageList.routeName,
+          DetailList.routeName,
           arguments: resto.id,
         );
       },
@@ -79,7 +79,7 @@ class ListResto extends StatelessWidget {
                               Text(
                                 resto.city,
                                 style: GoogleFonts.montserrat(
-                                  textStyle: TextStyle(fontSize: 15),
+                                  textStyle: const TextStyle(fontSize: 15),
                                 ),
                               ),
                               const SizedBox(
@@ -93,7 +93,9 @@ class ListResto extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              Text(resto.rating.toString()),
+                              Text(
+                                resto.rating.toString(),
+                              ),
                             ],
                           ),
                         ],

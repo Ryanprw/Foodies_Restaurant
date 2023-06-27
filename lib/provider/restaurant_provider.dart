@@ -4,24 +4,24 @@ import 'package:restauran_app/data/model/restaurant.dart';
 
 enum ResultState { loading, noData, hasData, error }
 
-class RestoListProvider extends ChangeNotifier {
+class ListProvider extends ChangeNotifier {
   final ApiService apiService;
 
-  RestoListProvider({required this.apiService}) {
-    _fetRestoList();
+  ListProvider({required this.apiService}) {
+    _fetList();
   }
 
   late ResultState _state;
-  late ResRestoran _list;
+  late LocalRestaurant _list;
   String _massage = '';
 
   ResultState get state => _state;
 
-  ResRestoran get result => _list;
+  LocalRestaurant get result => _list;
 
   String get message => _massage;
 
-  Future<dynamic> _fetRestoList() async {
+  Future<dynamic> _fetList() async {
     try {
       _state = ResultState.loading;
       notifyListeners();

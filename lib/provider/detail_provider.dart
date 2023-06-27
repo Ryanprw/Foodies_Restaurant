@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:restauran_app/data/api/api_service.dart';
-import 'package:restauran_app/data/model/detail_restaurant.dart';
+import 'package:restauran_app/data/model/detail_resto.dart';
 
 enum ResultState { loading, noData, hasData, error }
 
-class ResDetailProvider extends ChangeNotifier {
+class DetailProvider extends ChangeNotifier {
   final ApiService apiService;
   final String id;
 
-  ResDetailProvider({required this.apiService, required this.id}) {
-    _fetchReDetail(id);
+  DetailProvider({required this.apiService, required this.id}) {
+    _fetchDetail(id);
   }
 
   late ResultState _state;
-  late ResDetail _detail;
+  late LocalDetail _detail;
   String _message = '';
 
   ResultState get state => _state;
-  ResDetail get result => _detail;
+  LocalDetail get result => _detail;
   String get message => _message;
 
-  Future<dynamic> _fetchReDetail(String id) async {
+  Future<dynamic> _fetchDetail(String id) async {
     try {
       _state = ResultState.loading;
       notifyListeners();
