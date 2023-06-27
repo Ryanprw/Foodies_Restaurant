@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:restauran_app/Loading/splashscreen.dart';
-import 'package:restauran_app/home/home_screen.dart';
+import 'package:restauran_app/splashscreen/splashscreen.dart';
+import 'package:restauran_app/ui/list_resto_screen.dart';
+import 'package:restauran_app/ui/page_detail.dart';
+import 'ui/search_resto.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -25,23 +27,27 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: Future.delayed(Duration(seconds: 3)),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return SplashScreen();
-          }
+      future: Future.delayed(
+        const Duration(seconds: 3),
+      ),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const SplashScreen();
+        } else {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'News App',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-              visualDensity: VisualDensity.adaptivePlatformDensity,
-            ),
-            initialRoute: '/',
+            title: 'Restoran App',
+            theme: ThemeData(primarySwatch: Colors.blue),
+            home: const ListRestoScreen(),
             routes: {
-              '/': (context) => const MyHomePage(),
+              DetailPageList.routeName: (context) => DetailPageList(
+                    id: ModalRoute.of(context)?.settings.arguments as String,
+                  ),
+              SearchPageScreen.routeName: (context) => const SearchPageScreen()
             },
           );
-        });
+        }
+      },
+    );
   }
 }
