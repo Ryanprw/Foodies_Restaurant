@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restauran_app/data/model/search_resto.dart';
-import 'package:restauran_app/ui/detail.dart';
+import '../ui/detail.dart';
 
 class ScreenSearch extends StatelessWidget {
   final Restaurant restaurant;
@@ -15,7 +15,7 @@ class ScreenSearch extends StatelessWidget {
             arguments: restaurant.id);
       },
       child: Card(
-        color: Colors.white54,
+        color: Colors.black54,
         margin: const EdgeInsets.all(15),
         elevation: 10,
         child: Padding(
@@ -38,7 +38,7 @@ class ScreenSearch extends StatelessWidget {
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
             subtitle: Column(
@@ -55,7 +55,7 @@ class ScreenSearch extends StatelessWidget {
                     const SizedBox(width: 5),
                     Text(
                       restaurant.city,
-                      style: const TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ],
                 ),
@@ -71,7 +71,7 @@ class ScreenSearch extends StatelessWidget {
                     const SizedBox(width: 5),
                     Text(
                       '${restaurant.rating}',
-                      style: const TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.white),
                     )
                   ],
                 ),

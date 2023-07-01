@@ -9,7 +9,7 @@ class SplashScreen extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 12, 145, 80),
+        backgroundColor: Colors.black,
         body: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

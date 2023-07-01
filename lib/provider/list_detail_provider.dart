@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:restauran_app/data/api/api_service.dart';
 import 'package:restauran_app/data/model/restaurant.dart';
-
-enum ResultState { loading, noData, hasData, error }
+import '../until/result_state.dart';
 
 class ListProvider extends ChangeNotifier {
-  final ApiService apiService;
+  late final ApiService apiService;
 
   ListProvider({required this.apiService}) {
-    _fetList();
+    _fetRestoList();
   }
 
   late ResultState _state;
-  late LocalRestaurant _list;
+  late LocalListRestaurant _list;
   String _massage = '';
 
   ResultState get state => _state;
 
-  LocalRestaurant get result => _list;
+  LocalListRestaurant get result => _list;
 
   String get message => _massage;
 
-  Future<dynamic> _fetList() async {
+  Future<dynamic> _fetRestoList() async {
     try {
       _state = ResultState.loading;
       notifyListeners();
@@ -38,7 +37,7 @@ class ListProvider extends ChangeNotifier {
     } catch (e) {
       _state = ResultState.error;
       notifyListeners();
-      return _massage = 'No Network Connection';
+      return _massage = 'Gagal Memuat Data';
     }
   }
 }

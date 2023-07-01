@@ -11,14 +11,14 @@ class ApiService {
   static const String _detail = 'detail/';
   static const String _search = 'search?q=';
 
-  Future<LocalRestaurant> getData() async {
+  Future<LocalListRestaurant> getData() async {
     final response = await http.get(Uri.parse(_baseUrl + list));
     if (response.statusCode == 200) {
-      return LocalRestaurant.fromJson(
+      return LocalListRestaurant.fromJson(
         json.decode(response.body),
       );
     } else {
-      throw Exception('Failed to load data');
+      throw Exception('No connection');
     }
   }
 

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:restauran_app/data/api/api_service.dart';
-import 'package:restauran_app/provider/restaurant_provider.dart';
 import 'package:restauran_app/ui/search.dart';
 import 'package:restauran_app/widgets/card_screen.dart';
+import '../provider/list_detail_provider.dart';
+import '../until/result_state.dart';
 
 class ListScreen extends StatelessWidget {
   static const routeName = '/list';
@@ -14,11 +15,10 @@ class ListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 12, 145, 80),
       appBar: AppBar(
         title: const Text("Foodies"),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 12, 145, 80),
+        backgroundColor: Colors.black,
         actions: [
           IconButton(
             onPressed: () {
@@ -51,11 +51,10 @@ Widget _listBody(BuildContext context) {
             );
           case ResultState.hasData:
             return ListView.builder(
-              itemBuilder: (context, index) {
+              itemBuilder: (_, index) {
                 var resto = state.result.restaurants[index];
-
                 return CardScreen(
-                  resto: resto,
+                  restaurant: resto,
                 );
               },
               itemCount: state.result.restaurants.length,
@@ -70,7 +69,7 @@ Widget _listBody(BuildContext context) {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  LottieBuilder.asset("assets/ghost.json"),
+                  LottieBuilder.asset("assets/NoInternet.json"),
                 ],
               ),
             );

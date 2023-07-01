@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:restauran_app/provider/detail_provider.dart';
+import 'package:restauran_app/data/api/api_service.dart';
 import 'package:restauran_app/widgets/detail_screen.dart';
-import '../data/api/api_service.dart';
+import '../provider/resto_detail_provider.dart';
+import '../until/result_state.dart';
 
 class DetailList extends StatelessWidget {
   static const routeName = '/detail';
@@ -26,14 +27,14 @@ class DetailList extends StatelessWidget {
                 ),
               );
             case ResultState.hasData:
-              return ScreenDetail(restaurant: state.result.restaurant);
+              return ScreenDetail(resDetailRespon: state.result);
             case ResultState.error:
               return Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    LottieBuilder.asset("assets/ghost.json"),
+                    LottieBuilder.asset("assets/NoInternet.json"),
                   ],
                 ),
               );
@@ -41,9 +42,7 @@ class DetailList extends StatelessWidget {
               return const Center(
                 child: Text(
                   'No connection',
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
+                  style: TextStyle(fontSize: 24),
                 ),
               );
           }

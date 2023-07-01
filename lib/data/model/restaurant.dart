@@ -1,15 +1,16 @@
 import 'dart:convert';
 
-LocalRestaurant localRestaurantFromJson(String str) => LocalRestaurant.fromJson(
+LocalListRestaurant localListRestaurantFromJson(String str) =>
+    LocalListRestaurant.fromJson(
       json.decode(str),
     );
 
-String localRestaurantToJson(LocalRestaurant data) => json.encode(
+String localListRestaurantToJson(LocalListRestaurant data) => json.encode(
       data.toJson(),
     );
 
-class LocalRestaurant {
-  LocalRestaurant({
+class LocalListRestaurant {
+  LocalListRestaurant({
     required this.error,
     required this.message,
     required this.count,
@@ -21,8 +22,8 @@ class LocalRestaurant {
   int count;
   List<Restaurant> restaurants;
 
-  factory LocalRestaurant.fromJson(Map<String, dynamic> json) =>
-      LocalRestaurant(
+  factory LocalListRestaurant.fromJson(Map<String, dynamic> json) =>
+      LocalListRestaurant(
         error: json["error"],
         message: json["message"],
         count: json["count"],

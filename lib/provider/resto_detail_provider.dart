@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:restauran_app/data/api/api_service.dart';
 import 'package:restauran_app/data/model/detail_resto.dart';
-
-enum ResultState { loading, noData, hasData, error }
+import '../until/result_state.dart';
 
 class DetailProvider extends ChangeNotifier {
   final ApiService apiService;
   final String id;
 
   DetailProvider({required this.apiService, required this.id}) {
-    _fetchDetail(id);
+    _fetchReDetail(id);
   }
 
   late ResultState _state;
@@ -17,10 +16,12 @@ class DetailProvider extends ChangeNotifier {
   String _message = '';
 
   ResultState get state => _state;
+
   LocalDetail get result => _detail;
+
   String get message => _message;
 
-  Future<dynamic> _fetchDetail(String id) async {
+  Future<dynamic> _fetchReDetail(String id) async {
     try {
       _state = ResultState.loading;
       notifyListeners();
@@ -32,12 +33,12 @@ class DetailProvider extends ChangeNotifier {
       } else {
         _state = ResultState.noData;
         notifyListeners();
-        return _message = 'No Network Connection';
+        return _message = 'Data tidak ditemukan';
       }
     } catch (e) {
       _state = ResultState.error;
       notifyListeners();
-      return _message = 'No connection';
+      return _message = 'Gagal memuat data';
     }
   }
 }

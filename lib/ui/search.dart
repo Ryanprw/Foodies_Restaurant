@@ -18,7 +18,7 @@ class _SearchScreenState extends State<SearchScreen> {
   String queries = '';
 
   Widget _buildSearchResto(BuildContext context) {
-    return Consumer<SearchResProvider>(
+    return Consumer<SearchProvider>(
       builder: (context, state, _) {
         switch (state.state) {
           case ResultState.loading:
@@ -48,7 +48,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 padding: const EdgeInsets.all(20),
                 width: 300,
                 height: double.infinity,
-                child: LottieBuilder.asset("assets/ghost.json"),
+                child: LottieBuilder.asset("assets/NoInternet.json"),
               ),
             );
           default:
@@ -63,13 +63,12 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => SearchResProvider(
+      create: (_) => SearchProvider(
         apiService: ApiService(),
       ),
-      child: Consumer<SearchResProvider>(
+      child: Consumer<SearchProvider>(
         builder: (context, state, _) {
           return Scaffold(
-            backgroundColor: const Color.fromARGB(255, 12, 145, 80),
             body: Stack(
               children: [
                 SafeArea(
@@ -95,7 +94,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             queries = result;
                           },
                         );
-                        state.fetcViewRes(result);
+                        state.fetcView(result);
                       },
                     ),
                   ),

@@ -4,11 +4,11 @@ import 'package:restauran_app/data/model/search_resto.dart';
 
 enum ResultState { loading, noData, hasData, error }
 
-class SearchResProvider extends ChangeNotifier {
+class SearchProvider extends ChangeNotifier {
   final ApiService apiService;
 
-  SearchResProvider({required this.apiService}) {
-    fetcViewRes(query);
+  SearchProvider({required this.apiService}) {
+    fetcView(query);
   }
   ResultState? _state;
   LocalSearch? _search;
@@ -20,7 +20,7 @@ class SearchResProvider extends ChangeNotifier {
   String get query => _query;
   String get message => _message;
 
-  Future<dynamic> fetcViewRes(String query) async {
+  Future<dynamic> fetcView(String query) async {
     try {
       if (query.isNotEmpty) {
         _state = ResultState.loading;
