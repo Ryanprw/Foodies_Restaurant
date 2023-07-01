@@ -37,18 +37,3 @@
 - flutter_local_notifications
 - rxdart
 
-  ## Demo
-
-|Dashboard|Favorite|Search Restaurant|Detail Restaurant|
-|--|--|--|--|
-|![Screenshot_1688174420](https://github.com/Ryanprw/Foodies_Restaurant/assets/54059328/efcbd1ff-5f95-4466-aa34-4e3e3912f83a)
-|![Screenshot_1688174435](https://github.com/Ryanprw/Foodies_Restaurant/assets/54059328/0c3af2c9-eec2-47af-9686-1dfe32b3e834)
-|![Screenshot_1688174462](https://github.com/Ryanprw/Foodies_Restaurant/assets/54059328/fe218ef5-368b-4be4-81bc-cafcbbd9d0b4)
-|![Screenshot_1688174478](https://github.com/Ryanprw/Foodies_Restaurant/assets/54059328/927aa8a0-b565-4382-bd06-a31fa717298b)
-|
-
-|Favorite|Unfavorite|Search Favorite|
-|--|--|--|
-|![](demo/favorite.gif)|![](demo/unfavorite.gif)|![](demo/search-favorite.gif)|
-
-
