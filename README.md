@@ -7,7 +7,7 @@
 <p align="center">
   <a href="https://flutter.dev/"><img alt="Platform" src="https://img.shields.io/badge/platform-Flutter-blue.svg"></a>
   <a href="https://dart.dev/"><img alt="Dart" src="https://img.shields.io/badge/dart-3.0.0-blue.svg"></a>
-  <a href="https://github.com/Ryanprw/Wisata/"><img alt="Star" src="https://img.shields.io/github/stars/Ryanprw/Foodies"></a>
+  <a href="https://github.com/Ryanprw/Wisata/"><img alt="Star" src="https://img.shields.io/github/stars/Ryanprw/Foodies_Restaurant"></a>
 </p>
 
 
