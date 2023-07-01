@@ -23,7 +23,9 @@
 - Detail Restaurant
 - Show Rating 
 - Search Restaurant
-- Favorite Restaurant
+- Add Favorite
+- Remove Favorite
+- Notification
 
 ## :hammer_and_wrench: Dependencies
 - lottie
